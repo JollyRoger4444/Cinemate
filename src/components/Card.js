@@ -2,8 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import Backup from "../assets/images/backup.png"
 import { useDispatch,useSelector } from "react-redux";
 import { actions } from "../Kimbo/Slice";
-import { useRate} from '../hooks/useRate';
-import { useUnRate } from '../hooks/useUnRate';
+import { useRate, useUnRate } from "../hooks";
 
 export const Card = ({ movie }) => {
   const { id, original_title, overview, poster_path } = movie;

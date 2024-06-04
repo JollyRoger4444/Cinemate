@@ -1,4 +1,4 @@
-import { useSession } from "../hooks/useSession";
+import { useSession } from "../hooks";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {

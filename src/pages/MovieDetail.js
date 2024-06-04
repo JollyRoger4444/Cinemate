@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useTitle } from "../hooks/useTitle";
+import { useTitle, useUnRate, useRate } from "../hooks";
 import Backup from "../assets/images/backup.png"
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../Kimbo/Slice";
-import { useRate } from '../hooks/useRate';
-import { useUnRate } from '../hooks/useUnRate';
 
 export const MovieDetail = () => {
   const params = useParams();
