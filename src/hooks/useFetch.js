@@ -9,7 +9,7 @@ export const useFetch = (apiPath, queryTerm = "") => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const location = useLocation();
-  const list = useSelector((state) => state.list.list); // replace with your actual selector
+  const list = useSelector((state) => state.list.list); 
 
   useEffect(() => {
     dispatch(actions.loading(true));
@@ -28,13 +28,12 @@ export const useFetch = (apiPath, queryTerm = "") => {
         setData(json.results);
       } catch (error) {
         console.error("An error occurred while fetching the movies:", error);
-        nav("/"); // Navigate back to home path if an error occurs
+        nav("/"); 
       } finally {
         dispatch(actions.loading(false));
       }
     }
     if (location.pathname === "/movies/watchlist") {
-      // Introduce a delay of 1 second before re-fetching the data
       setTimeout(fetchMovies, 1800);
     } else {
       fetchMovies();

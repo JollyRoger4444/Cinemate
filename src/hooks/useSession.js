@@ -27,7 +27,6 @@ export const useSession = () => {
                 try {
                     const response = await fetch('https://api.themoviedb.org/3/authentication/guest_session/new', options);
                     if (!response.ok) {
-                        console.log(response);
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     const data = await response.json();

@@ -1,6 +1,5 @@
 import { AllRoutes } from "./routes/AllRoutes";
 import { Header, Footer} from "./components"
-import './App.css';
 import { Loader } from './Kimbo/Loader';
 
 
