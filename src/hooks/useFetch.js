@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 export const useFetch = (apiPath, queryTerm = "") => {
   const [data, setData] = useState([]);
-  const url = `https://api.themoviedb.org/3/${apiPath}?api_key=${process.env.REACT_APP_API_KEY}&query=${queryTerm}`;
+  const url = `http://localhost:5000/api/fetch/${apiPath}?query=${queryTerm}`;
   const dispatch = useDispatch();
   const nav = useNavigate();
   const location = useLocation();
@@ -15,14 +15,12 @@ export const useFetch = (apiPath, queryTerm = "") => {
     dispatch(actions.loading(true));
     async function fetchMovies() {
       try {
+        dispatch(actions.error(null));
         const response = await fetch(url);
         if (!response.ok && response.status !== 404) {
+          dispatch(actions.loading(false));
+          dispatch(actions.error(response.status));
           throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        if (response.status === 404) {
-          nav("*", { state: { fromWatchlist: true } });
-        dispatch(actions.loading(false));
-        return;
         }
         const json = await response.json();
         setData(json.results);
@@ -41,5 +39,8 @@ export const useFetch = (apiPath, queryTerm = "") => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, nav, list]);
+      if (!data) {
+        dispatch(actions.error("Nothing to see here!"));
+      }
   return { data };
 };

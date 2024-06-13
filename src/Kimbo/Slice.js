@@ -7,6 +7,7 @@ export const Slice = createSlice({
         guestSessionId: "",
         movieId: "",
         loading:false,
+        err: "",
     },
     reducers: {
         add(state, action) {
@@ -33,6 +34,9 @@ export const Slice = createSlice({
             } else {
                 state.list = [];
             };
+        },
+        error(state, action) {
+            state.err = action.payload;
         }
     }
 }); 

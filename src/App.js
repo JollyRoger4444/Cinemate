@@ -1,6 +1,7 @@
 import { AllRoutes } from "./routes/AllRoutes";
 import { Header, Footer} from "./components"
 import { Loader } from './Kimbo/Loader';
+import { Error } from "./Kimbo/Error";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Loader />
       <AllRoutes />
       <Footer />
+      <Error />
     </div>
   );
 }
